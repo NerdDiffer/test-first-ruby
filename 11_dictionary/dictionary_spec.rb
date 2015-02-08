@@ -7,6 +7,8 @@
 #
 
 require 'dictionary'
+#require 'answer'
+#require 'afshin'
 
 describe Dictionary do
   before do

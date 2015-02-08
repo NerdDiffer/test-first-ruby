@@ -19,7 +19,7 @@ describe Book do
   before do
     @book = Book.new
   end
-
+  puts @book.class
   describe 'title' do
     it 'should capitalize the first letter' do
       @book.title = "inferno"
@@ -47,16 +47,24 @@ describe Book do
           @book.title = "to eat an apple a day"
           @book.title.should == "To Eat an Apple a Day"
         end
+      end # end articles
+
+      describe 'conjunctions' do
+        specify 'and' do
+          @book.title = "war and peace"
+          @book.title.should == "War and Peace"
+        end
+        specify 'nor' do
+          @book.title = "neither here nor there"
+          @book.title.should == "Neither Here nor There"
+        end
       end
 
-      specify 'conjunctions' do
-        @book.title = "war and peace"
-        @book.title.should == "War and Peace"
-      end
-
-      specify 'prepositions' do
-        @book.title = "love in the time of cholera"
-        @book.title.should == "Love in the Time of Cholera"
+      describe 'prepositions' do
+        specify 'in, the, of' do
+          @book.title = "love in the time of cholera"
+          @book.title.should == "Love in the Time of Cholera"
+        end
       end
     end
 
