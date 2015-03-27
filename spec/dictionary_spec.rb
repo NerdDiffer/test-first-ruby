@@ -6,7 +6,7 @@
 # * regular expressions
 #
 
-require 'dictionary'
+require './11_dictionary/dictionary.rb'
 #require 'answer'
 #require 'afshin'
 
