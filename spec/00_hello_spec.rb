@@ -113,7 +113,10 @@
 #       "Hello, #{who}!"
 #     end
 #
-require "hello"
+
+require "00_hello"
+
+require_relative '../rspec_config.rb'
 
 describe "the hello function" do
   it "says hello" do

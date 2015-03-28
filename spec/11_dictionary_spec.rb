@@ -4,11 +4,8 @@
 # * Array
 # * instance variables
 # * regular expressions
-#
 
-require './11_dictionary/dictionary.rb'
-#require 'answer'
-#require 'afshin'
+require '11_dictionary'
 
 describe Dictionary do
   before do

@@ -21,9 +21,9 @@ class Temperature
     end
   end
 
-  class << self
-    alias :from_celsius :in_fahrenheit
-  end
+  #class << self
+  #  alias :from_celsius :in_fahrenheit
+  #end
 
   def self.ftoc degrees_fahrenheit
     (degrees_fahrenheit - 32.0) * (5.0 / 9.0)

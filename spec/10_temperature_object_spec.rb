@@ -14,10 +14,8 @@
 #
 # The temperature object's constructor should accept an *options hash* which contains either a `:celcius` entry or a `:fahrenheit` entry.
 #
-#
-#
 
-require "temperature"
+require "10_temperature"
 
 describe Temperature do
 
