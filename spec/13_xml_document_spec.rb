@@ -15,6 +15,7 @@
 # "builder pattern"
 
 require "13_xml_document"
+require_relative '../rspec_config.rb'
 
 describe XmlDocument do
   before do

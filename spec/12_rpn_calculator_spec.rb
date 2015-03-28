@@ -34,6 +34,7 @@
 # * <http://www.calculator.org/rpn.aspx>
 #
 require "12_rpn_calculator"
+require_relative '../rspec_config.rb'
 
 describe RPNCalculator do
 

@@ -8,6 +8,7 @@
 # # Timer
 
 require '09_timer'
+require_relative '../rspec_config.rb'
 
 describe "Timer" do
   before(:each) do

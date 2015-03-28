@@ -13,6 +13,7 @@
 #
 
 require '08_book_titles'
+require_relative '../rspec_config.rb'
 
 describe Book do
 

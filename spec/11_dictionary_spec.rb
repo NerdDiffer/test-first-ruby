@@ -6,6 +6,7 @@
 # * regular expressions
 
 require '11_dictionary'
+require_relative '../rspec_config.rb'
 
 describe Dictionary do
   before do

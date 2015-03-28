@@ -34,6 +34,7 @@
 #
 
 require "02_calculator"
+require_relative "../rspec_config.rb"
 
 describe "add" do
   it "adds 0 and 0" do

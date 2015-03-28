@@ -7,6 +7,7 @@
 #
 
 require "05_silly_blocks"
+require_relative '../rspec_config.rb'
 
 describe "some silly block functions" do
 

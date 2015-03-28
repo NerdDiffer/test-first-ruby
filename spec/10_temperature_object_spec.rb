@@ -16,6 +16,7 @@
 #
 
 require "10_temperature"
+require_relative '../rspec_config.rb'
 
 describe Temperature do
 
@@ -75,12 +76,12 @@ describe Temperature do
   # on individual instances of the class.
   describe "can be constructed via factory methods" do
 
-    xit "in degrees celsius" do
+    it "in degrees celsius" do
       Temperature.from_celsius(50).in_celsius.should == 50
       Temperature.from_celsius(50).in_fahrenheit.should == 122
     end
 
-    xit "in degrees fahrenheit" do
+    it "in degrees fahrenheit" do
       Temperature.from_fahrenheit(50).in_fahrenheit.should == 50
       Temperature.from_fahrenheit(50).in_celsius.should == 10
     end

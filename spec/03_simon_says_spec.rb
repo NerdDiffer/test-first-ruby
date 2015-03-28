@@ -12,6 +12,7 @@
 #
 
 require "03_simon_says"
+require_relative '../rspec_config.rb'
 
 describe "Simon says" do
   describe "echo" do

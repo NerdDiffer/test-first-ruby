@@ -18,6 +18,7 @@
 #
 
 require "04_pig_latin"
+require_relative '../rspec_config.rb'
 
 describe "#translate" do
 

@@ -19,6 +19,7 @@
 #
 
 require "15_in_words"
+require_relative '../rspec_config.rb'
 
 describe Fixnum do
 

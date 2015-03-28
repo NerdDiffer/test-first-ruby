@@ -8,6 +8,7 @@
 
 # we don't call it "array.rb" since that would be confusing
 require "14_array_extensions" 
+require_relative '../rspec_config.rb'
 
 describe Array do
 

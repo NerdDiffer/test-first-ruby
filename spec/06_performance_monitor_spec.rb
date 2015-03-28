@@ -11,6 +11,7 @@
 # tells you how long it took to run.
 
 require "06_performance_monitor"
+require_relative '../rspec_config.rb'
 
 require "time"  # loads up the Time.parse method -- do NOT create time.rb!
 

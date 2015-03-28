@@ -15,6 +15,7 @@
 #    1.0 / 2.0 => 0.5
 #
 
+require '01_temperature'
 require_relative '../rspec_config.rb'
 
 describe "temperature conversion functions" do
