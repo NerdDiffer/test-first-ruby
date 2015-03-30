@@ -1,8 +1,27 @@
 class Temperature
-  def initialize options = {}
-    options.each do |name, value|
-      instance_variable_set "@#{name}", value
-    end
+  @ratio = (9.0 / 5.0)
+  @diff = 32
+
+  def initialize(options = {})
+    options.each { |name, value| instance_variable_set "@#{name}", value }
+  end
+
+  def self.from_celsius(degrees)
+    new(:c => degrees)
+  end
+
+  def self.from_fahrenheit(degrees)
+    new(:f => degrees)
+  end
+
+  def self.ftoc(degrees)
+    degrees -= @diff
+    degrees /= @ratio
+  end
+  
+  def self.ctof(degrees)
+    degrees *= @ratio
+    degrees += @diff
   end
 
   def in_fahrenheit
@@ -21,17 +40,6 @@ class Temperature
     end
   end
 
-  #class << self
-  #  alias :from_celsius :in_fahrenheit
-  #end
-
-  def self.ftoc degrees_fahrenheit
-    (degrees_fahrenheit - 32.0) * (5.0 / 9.0)
-  end
-  
-  def self.ctof degrees_celsius
-    (degrees_celsius * (9.0 / 5.0)) + 32.0
-  end
 end
 
 class Celsius < Temperature

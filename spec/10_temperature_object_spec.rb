@@ -36,7 +36,7 @@ describe Temperature do
         end
 
         it "at body temperature" do
-          Temperature.new(:f => 98.6).in_celsius.should == 37
+          Temperature.new(:f => 98.6).in_celsius.should be_within(0.1).of(37)
         end
 
         it "at an arbitrary temperature" do
@@ -104,7 +104,7 @@ describe Temperature do
         Temperature.ftoc(212).should == 100
       end
       it "converts body temperature" do
-        Temperature.ftoc(98.6).should == 37
+        Temperature.ftoc(98.6).should be_within(0.1).of 37
       end
       it "converts arbitrary temperature" do
         Temperature.ftoc(68).should == 20
