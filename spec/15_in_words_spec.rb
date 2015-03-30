@@ -21,83 +21,118 @@
 require "15_in_words"
 require_relative '../rspec_config.rb'
 
+describe EnglishNumber do
+  describe 'length' do
+    it 'gives a length of number as if it was a string' do
+      0.length.should == 1
+      100.length.should == 3
+      1_342.length.should == 4
+    end
+  end
+  describe 'group_by' do
+    it 'Returns the number as a string array. Grouped by a number' do
+      1342.group_by(3).should == ['1', '342']
+    end
+    it 'Returns the number as a string array. Grouped by a number' do
+      123.group_by(2).should == ['1', '23']
+    end
+  end
+end
+
 describe Fixnum do
 
-  it "reads 0 to 9" do
-    0.in_words.should == 'zero'
-    1.in_words.should == 'one'
-    2.in_words.should == 'two'
-    3.in_words.should == 'three'
-    4.in_words.should == 'four'
-    5.in_words.should == 'five'
-    6.in_words.should == 'six'
-    7.in_words.should == 'seven'
-    8.in_words.should == 'eight'
-    9.in_words.should == 'nine'
+  describe 'floor_to_nearest' do
+    it 'rounds a number down to nearest multiple of 10' do
+      45.floor_to_nearest.should == 40
+    end
+    it 'rounds a number down to nearest multiple of 100' do
+      104.floor_to_nearest(100).should == 100
+    end
+    it 'rounds a number down to nearest multiple of 1000' do
+      3333.floor_to_nearest(1000).should == 3000
+    end
+    it 'rounds a number down to nearest multiple of 1000000' do
+      2234567.floor_to_nearest(1000000).should == 2000000
+    end
   end
 
-  it "reads 10 to 12" do
-    10.in_words.should == 'ten'
-    11.in_words.should == 'eleven'
-    12.in_words.should == 'twelve'
+  describe 'in_words' do
+    it "reads 0 to 9" do
+      0.in_words.should == 'zero'
+      1.in_words.should == 'one'
+      2.in_words.should == 'two'
+      3.in_words.should == 'three'
+      4.in_words.should == 'four'
+      5.in_words.should == 'five'
+      6.in_words.should == 'six'
+      7.in_words.should == 'seven'
+      8.in_words.should == 'eight'
+      9.in_words.should == 'nine'
+    end
+  
+    it "reads 10 to 12" do
+      10.in_words.should == 'ten'
+      11.in_words.should == 'eleven'
+      12.in_words.should == 'twelve'
+    end
+  
+    it "reads teens" do
+      13.in_words.should == 'thirteen'
+      14.in_words.should == 'fourteen'
+      15.in_words.should == 'fifteen'
+      16.in_words.should == 'sixteen'
+      17.in_words.should == 'seventeen'
+      18.in_words.should == 'eighteen'
+      19.in_words.should == 'nineteen'
+    end
+  
+    it "reads tens" do
+      20.in_words.should == 'twenty'
+      30.in_words.should == 'thirty'
+      40.in_words.should == 'forty'
+      50.in_words.should == 'fifty'
+      60.in_words.should == 'sixty'
+      70.in_words.should == 'seventy'
+      80.in_words.should == 'eighty'
+      90.in_words.should == 'ninety'
+    end
+  
+    it "reads various other numbers less than 100" do
+      20.in_words.should == 'twenty'
+      77.in_words.should == 'seventy seven'
+      99.in_words.should == 'ninety nine'
+    end
+  
+    it "reads hundreds" do
+      100.in_words.should == 'one hundred'
+      200.in_words.should == 'two hundred'
+      300.in_words.should == 'three hundred'
+      123.in_words.should == 'one hundred twenty three'
+      777.in_words.should == 'seven hundred seventy seven'
+      818.in_words.should == 'eight hundred eighteen'
+      512.in_words.should == 'five hundred twelve'
+      999.in_words.should == 'nine hundred ninety nine'
+    end
+  
+    it "reads thousands" do
+      1000.in_words.should == 'one thousand'
+      32767.in_words.should == 'thirty two thousand seven hundred sixty seven'
+      32768.in_words.should == 'thirty two thousand seven hundred sixty eight'
+    end
+  
+    it "reads millions" do
+      10_000_001.in_words.should == 'ten million one'
+    end
+  
+    it "reads billions" do
+      1_234_567_890.in_words.should == 'one billion two hundred thirty four million five hundred sixty seven thousand eight hundred ninety'
+    end
+  
+    it "reads trillions" do
+      1_000_000_000_000.in_words.should == 'one trillion'
+      1_000_000_000_001.in_words.should == 'one trillion one'
+      1_888_259_040_036.in_words.should == 'one trillion eight hundred eighty eight billion two hundred fifty nine million forty thousand thirty six'
+    end
+  
   end
-
-  it "reads teens" do
-    13.in_words.should == 'thirteen'
-    14.in_words.should == 'fourteen'
-    15.in_words.should == 'fifteen'
-    16.in_words.should == 'sixteen'
-    17.in_words.should == 'seventeen'
-    18.in_words.should == 'eighteen'
-    19.in_words.should == 'nineteen'
-  end
-
-  it "reads tens" do
-    20.in_words.should == 'twenty'
-    30.in_words.should == 'thirty'
-    40.in_words.should == 'forty'
-    50.in_words.should == 'fifty'
-    60.in_words.should == 'sixty'
-    70.in_words.should == 'seventy'
-    80.in_words.should == 'eighty'
-    90.in_words.should == 'ninety'
-  end
-
-  it "reads various other numbers less than 100" do
-    20.in_words.should == 'twenty'
-    77.in_words.should == 'seventy seven'
-    99.in_words.should == 'ninety nine'
-  end
-
-  it "reads hundreds" do
-    100.in_words.should == 'one hundred'
-    200.in_words.should == 'two hundred'
-    300.in_words.should == 'three hundred'
-    123.in_words.should == 'one hundred twenty three'
-    777.in_words.should == 'seven hundred seventy seven'
-    818.in_words.should == 'eight hundred eighteen'
-    512.in_words.should == 'five hundred twelve'
-    999.in_words.should == 'nine hundred ninety nine'
-  end
-
-  it "reads thousands" do
-    1000.in_words.should == 'one thousand'
-    32767.in_words.should == 'thirty two thousand seven hundred sixty seven'
-    32768.in_words.should == 'thirty two thousand seven hundred sixty eight'
-  end
-
-  it "reads millions" do
-    10_000_001.in_words.should == 'ten million one'
-  end
-
-  it "reads billions" do
-    1_234_567_890.in_words.should == 'one billion two hundred thirty four million five hundred sixty seven thousand eight hundred ninety'
-  end
-
-  it "reads trillions" do
-    1_000_000_000_000.in_words.should == 'one trillion'
-    1_000_000_000_001.in_words.should == 'one trillion one'
-    1_888_259_040_036.in_words.should == 'one trillion eight hundred eighty eight billion two hundred fifty nine million forty thousand thirty six'
-  end
-
 end
