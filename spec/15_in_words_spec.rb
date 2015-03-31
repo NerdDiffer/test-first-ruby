@@ -22,25 +22,29 @@ require "15_in_words"
 require_relative '../rspec_config.rb'
 
 describe EnglishNumber do
-  describe 'length' do
-    it 'gives a length of number as if it was a string' do
-      0.length.should == 1
-      100.length.should == 3
-      1_342.length.should == 4
-    end
-  end
   describe 'group_by' do
-    it 'Returns the number as a string array. Grouped by a number' do
+    it 'Returns the number as a string array. Grouped by 2' do
+      123.group_by(2).should == ['1', '23']
+    end
+    it 'Returns the number as a string array. Grouped by 3' do
       1342.group_by(3).should == ['1', '342']
     end
-    it 'Returns the number as a string array. Grouped by a number' do
-      123.group_by(2).should == ['1', '23']
+  end
+  describe 'get_scope_word' do
+    it 'returns a word describing its scope' do
+      1_000.get_scope_word().should == 'thousand'
+      1_000_000.get_scope_word().should == 'million'
+      1_000_000_000.get_scope_word().should == 'billion'
+      1_000_000_000_000.get_scope_word().should == 'trillion'
+    end
+    it 'returns nil when it cannot find anything' do
+      25.get_scope_word().should == nil
+      100.get_scope_word().should == nil
     end
   end
 end
 
 describe Fixnum do
-
   describe 'floor_to_nearest' do
     it 'rounds a number down to nearest multiple of 10' do
       45.floor_to_nearest.should == 40
@@ -55,7 +59,6 @@ describe Fixnum do
       2234567.floor_to_nearest(1000000).should == 2000000
     end
   end
-
   describe 'in_words' do
     it "reads 0 to 9" do
       0.in_words.should == 'zero'
@@ -122,6 +125,7 @@ describe Fixnum do
   
     it "reads millions" do
       10_000_001.in_words.should == 'ten million one'
+      234_567_890.in_words.should == 'two hundred thirty four million five hundred sixty seven thousand eight hundred ninety'
     end
   
     it "reads billions" do
