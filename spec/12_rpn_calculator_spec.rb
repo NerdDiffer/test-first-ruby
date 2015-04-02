@@ -131,7 +131,7 @@ describe RPNCalculator do
   end
 
   # extra credit
-  xit "evaluates a string" do
+  it "evaluates a string" do
     calculator.evaluate("1 2 3 * +").should ==
       ((2 * 3) + 1)
 

@@ -31,7 +31,26 @@ class RPNCalculator
     str.map { |n| n.match(/\d/) ? n.to_i : n.to_sym }
   end
 
+  def evaluate str
+    str_tokens = tokens(str)
+
+    str_tokens.each_with_index do |token, ind|
+      unless [:+, :-, :*, :/].include? token
+        self.push(token)
+      else
+        case token
+        when :+ then operation = plus
+        when :* then operation = times
+        when :- then operation = minus
+        when :/ then operation = divide
+        end
+        return operation if ind == str_tokens.length - 1
+      end
+    end
+  end
+
   private
+
   def do_math
     operands = pop_two_operands()
     result = yield(operands)
