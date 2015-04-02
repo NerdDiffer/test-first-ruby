@@ -22,7 +22,7 @@ require "15_in_words"
 require_relative '../rspec_config.rb'
 
 describe EnglishNumber do
-  describe 'group_by' do
+  describe '#group_by' do
     it 'Returns the number as a string array. Grouped by 2' do
       123.group_by(2).should == ['1', '23']
     end
@@ -30,7 +30,7 @@ describe EnglishNumber do
       1342.group_by(3).should == ['1', '342']
     end
   end
-  describe 'get_scope_word' do
+  describe '#get_scope_word' do
     it 'returns a word describing its scope' do
       1_000.get_scope_word().should == 'thousand'
       1_000_000.get_scope_word().should == 'million'
@@ -42,10 +42,7 @@ describe EnglishNumber do
       100.get_scope_word().should == nil
     end
   end
-end
-
-describe Fixnum do
-  describe 'floor_to_nearest' do
+  describe '#floor_to_nearest' do
     it 'rounds a number down to nearest multiple of 10' do
       45.floor_to_nearest.should == 40
     end
@@ -59,7 +56,15 @@ describe Fixnum do
       2234567.floor_to_nearest(1000000).should == 2000000
     end
   end
-  describe 'in_words' do
+  describe '#build_str' do
+    it 'is a private method, so calling it as a normal instance method raises an error' do
+      expect{ 450.build_str(100) }.to raise_error NoMethodError
+    end
+  end
+end
+
+describe Fixnum do
+  describe '#in_words' do
     it "reads 0 to 9" do
       0.in_words.should == 'zero'
       1.in_words.should == 'one'
