@@ -88,7 +88,7 @@
 #
 #
 
-require "07_friend"
+require "07_hello_friend"
 require_relative '../rspec_config.rb'
 
 describe Friend do

@@ -17,11 +17,13 @@ class Temperature
   def self.ftoc(degrees)
     degrees -= @diff
     degrees /= @ratio
+    degrees.round(1)
   end
   
   def self.ctof(degrees)
     degrees *= @ratio
     degrees += @diff
+    degrees.round(1) 
   end
 
   def in_fahrenheit

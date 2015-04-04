@@ -15,7 +15,7 @@
 # The temperature object's constructor should accept an *options hash* which contains either a `:celcius` entry or a `:fahrenheit` entry.
 #
 
-require "10_temperature"
+require "10_temperature_object"
 require_relative '../rspec_config.rb'
 
 describe Temperature do
@@ -36,7 +36,7 @@ describe Temperature do
         end
 
         it "at body temperature" do
-          Temperature.new(:f => 98.6).in_celsius.should be_within(0.1).of(37)
+          Temperature.new(:f => 98.6).in_celsius.should == 37
         end
 
         it "at an arbitrary temperature" do
